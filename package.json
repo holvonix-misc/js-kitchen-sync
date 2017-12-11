@@ -57,7 +57,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "json2array": "2.1.1"
+    "json2array": "2.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

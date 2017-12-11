@@ -1,8 +1,8 @@
 {
-  "name": "new-ball",
+  "name": "js-kitchen-sync",
   "version": "0.0.1-SNAPSHOT",
   "private": true,
-  "description": "Template for a new yarn-based node package",
+  "description": "Links to all our JS packages to track dependencies.",
   "main": "lib/index.js",
   "scripts": {
     "lint": "eslint src --fix",
@@ -11,10 +11,10 @@
     "precommit": "lint-staged && yarn prepare",
     "contrib": "./scripts/contrib.sh",
     "changelog":
-      "github-changes -o holvonix-open -r new-ball -n latest --order-semver --use-commit-body && prettier --write CHANGELOG.md",
+      "github-changes -o holvonix-open -r js-kitchen-sync -n latest --order-semver --use-commit-body && prettier --write CHANGELOG.md",
     "tidy": "yarn contrib && yarn changelog",
     "changelog-ci":
-      "github-changes -o holvonix-open -r new-ball -n latest --order-semver --use-commit-body --token $GH_RO_TOKEN && prettier --write CHANGELOG.md",
+      "github-changes -o holvonix-open -r js-kitchen-sync -n latest --order-semver --use-commit-body --token $GH_RO_TOKEN && prettier --write CHANGELOG.md",
     "tidy-ci": "yarn contrib && yarn changelog-ci",
     "prepare": "yarn lint && yarn build && yarn test"
   },
@@ -27,13 +27,13 @@
     "src/**/*.{js,jsx}": ["prettier --parser flow --write", "git add"],
     "**/*.{json,md}": ["prettier --write", "git add"]
   },
-  "homepage": "https://github.com/holvonix-open/new-ball#readme",
+  "homepage": "https://github.com/holvonix-open/js-kitchen-sync#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/holvonix-open/new-ball.git"
+    "url": "git+https://github.com/holvonix-open/js-kitchen-sync.git"
   },
   "author":
-    "Holvonix LLC and the new-ball AUTHORS <sourcecode@holvonix.com> (https://github.com/holvonix-open/new-ball)",
+    "Holvonix LLC and the js-kitchen-sync AUTHORS <sourcecode@holvonix.com> (https://github.com/holvonix-open/js-kitchen-sync)",
   "contributors": ["See AUTHORS file", "See CONTRIBUTORS file"],
   "files": [
     "lib/",
@@ -53,6 +53,9 @@
     "yarn.lock"
   ],
   "license": "Apache-2.0",
+  "dependencies": {
+    "json2array": "2.0.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "6.26.0",

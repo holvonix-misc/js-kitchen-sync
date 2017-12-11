@@ -1,7 +1,7 @@
 # js-kitchen-sync
 
 [![Build Status](https://travis-ci.org/holvonix-open/js-kitchen-sync.svg?branch=master)](https://travis-ci.org/holvonix-open/js-kitchen-sync)
-[![npm version](https://badge.fury.io/js/@holvonix-open/js-kitchen-sync.svg)](https://badge.fury.io/js/@holvonix-open/js-kitchen-sync)
+[![npm version](https://badge.fury.io/js/%40holvonix-open%2Fjs-kitchen-sync.svg)](https://badge.fury.io/js/%40holvonix-open%2Fjs-kitchen-sync)
 [![Greenkeeper badge](https://badges.greenkeeper.io/holvonix-open/js-kitchen-sync.svg)](https://greenkeeper.io/)
 
 Links to all our JS packages to track dependencies.

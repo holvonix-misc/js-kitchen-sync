@@ -1,7 +1,7 @@
 {
-  "name": "js-kitchen-sync",
-  "version": "0.0.1-SNAPSHOT",
-  "private": true,
+  "name": "@holvonix/js-kitchen-sync",
+  "version": "0.0.1",
+  "private": false,
   "description": "Links to all our JS packages to track dependencies.",
   "main": "lib/index.js",
   "scripts": {

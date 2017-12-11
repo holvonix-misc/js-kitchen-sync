@@ -1,6 +1,9 @@
 {
-  "name": "@holvonix/js-kitchen-sync",
-  "version": "0.0.1",
+  "name": "@holvonix-open/js-kitchen-sync",
+  "version": "0.0.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "private": false,
   "description": "Links to all our JS packages to track dependencies.",
   "main": "lib/index.js",

@@ -2,7 +2,6 @@ language: node_js
 node_js:
 - node
 - '8'
-- '4'
 sudo: false
 before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
@@ -30,16 +29,45 @@ script:
 - cat ./coverage/lcov.info | coveralls
 - codecov -f coverage/coverage-final.json
 after_script: greenkeeper-lockfile-upload
+stages:
+- name: test
+- name: deploy
+  if: tag =~ ^v AND fork = false AND type = push
 jobs:
   include:
-  - if: "(tag =~ ^v) AND (branch = master) AND (fork = false) AND (repo = holvonix-open/js-kitchen-sync)"
-    stage: deploy
+  - stage: test
+    if: type = cron
+    node_js: '8'
+    os: osx
+    osx_image: xcode9.2
+  - stage: test
+    if: type = cron
+    node_js: '7'
+  - stage: test
+    if: type = cron
+    node_js: '6'
+  - stage: test
+    if: type = cron
+    node_js: '5'
+  - stage: test
+    if: type = cron OR tag =~ ^v
+    node_js: '4'
+  - stage: deploy
+    before_install:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.3.2
+    - export PATH=$HOME/.yarn/bin:$PATH
+    install: []
+    before_script: []
+    script: yarn install --frozen-lockfile
+    after_script: []
     before_deploy: yarn tidy-ci
     deploy:
       provider: npm
       email: github-external-bot@holvonix.com
       skip_cleanup: true
       api_key: "$NPM_API_KEY"
+      on:
+        tags: true
 env:
   global:
   - secure: kuw1uLG1P4Dvzzm6MAIPx2e0fuYw+CracYEWVu9UBroeBkkaQh3ixmXM5HObvjfOPjyS/aoPDB3akHBU7IasR6sgq0itEfkY1WGeb5qht1flshbq0+uj4Cnl+WQRmKGN1lGRg7PaOrMtBVemW+DLO4MicuHfAwytsqLWzOO/J0XcIEUv9gDk34OoG93CIE3d7JOSQpVXdhZZBkhJVelPS4U3GcR7ONwAQLdDKMqi7AeNfSCFOxbU9BdyBuvHiMM6Mb5gCg6hglS8y5fYPj99u0H/K+JcKV1AOfBPiO05Y6wjdHBavYNZDjnxkZDD1QU6doSJ8cvhfq5XIM5QR+e6N71Fhn/SdWtyf6pqYAgWfL+pIb8+wo08T54O0S5jIYzrAk02pBwGe0+dG+06vXykW4B0zN/fag7YcPQ1iMEL86YZBYs0S3VuO8eWm3QBYzuNhkQylppyFXwONhKi2DS7Dx4laU5/547zjrCcPlswWGPQ7yji3Weml1fC2Rh6u+U3i3EM8eDNyzsddc/crAc5Kf47zUbrsBhsu5gfUUirzUXyxdde4UZWGxXv+Gr69SDVnRwrELBvCYdkRwKU9Y+alhAlF5xuuOh0TmVSOmOaEg3xjdWaenHywGxtUu1jr9xkOYXIhNt1qzque78xaQWGnHNOkSnu8u0czAHyrDoeo5M=

@@ -2,9 +2,6 @@ language: node_js
 node_js:
 - node
 - '8'
-#- '7'
-#- '6'
-#- '5'
 - '4'
 sudo: false
 before_install:
@@ -33,19 +30,18 @@ script:
 - cat ./coverage/lcov.info | coveralls
 - codecov -f coverage/coverage-final.json
 after_script: greenkeeper-lockfile-upload
-before_deploy: yarn tidy-ci
-deploy:
-  provider: npm
-  email: github-external-bot@holvonix.com
-  skip_cleanup: true
-  api_key:
-    secure: GMkWa5ITfTJA3x2jh5o0OQSvizR/yv7dedz9Q4UhFjOoD8qKZ7WficmTPaL9vqTfVOIy+QBlKLxbeDu4FflKiJXHol+1z5Ooorv/HmNWfZ9jB2xJKYTQpS4Fe6N11vVMhedxn9Bgr+LrCR8QfciWeJ/L79kw+Ntehdj89AmeczpQJ+9XUsWMIW7ckFu3LP6aMB+YdrX8ZW4VgAiTeoT2Kbqt77JBS0JFgwxQAZBm1bMyFpiaDA5JNRhRTW3YfqoeG7m0lVv9weKFeaT7mtTt5rx33iArMwHRWXFVg1u6wu2lIwroDtB7J3FAGexPkGZL2kKW8KxocVOSWB2qKXEVv2Cl1Tva+13SmrP7Pk6mUSSVKbquXFFZMOZgQXdVLCA7UWG5Fhm9hscofoVw1wOM8x6DKu351bDm6baOztb8ULncfYBiB+kNCRo+iRRSbGCb56GAJRCTBlW0YMvUKvwj4kBGCd71BqKRqxQSmJ851K6Ih69E1W/hz4vwnDO+h4rsPma8M5Rujwvmt/2lVXoT03liP7fQtK9TdSvZ/ygcFk4IbX1dldXSTxJm7N3UfGiESbFUb0V6qa525th4ha58qi/UCTNTXdH0kIpCphGrzTnu51UAdDbri4lEaZYA9mPHdqQHuSRbddkpbz702jzT0q3veUjCViKm/6BA7NemH4o=
-  on:
-    node: node
-    branch: master
-    tags: true
-    repo: holvonix-open/js-kitchen-sync
+jobs:
+  include:
+  - if: "(tag =~ ^v) AND (branch = master) AND (fork = false) AND (repo = holvonix-open/js-kitchen-sync)"
+    stage: deploy
+    before_deploy: yarn tidy-ci
+    deploy:
+      provider: npm
+      email: github-external-bot@holvonix.com
+      skip_cleanup: true
+      api_key: "$NPM_API_KEY"
 env:
   global:
   - secure: kuw1uLG1P4Dvzzm6MAIPx2e0fuYw+CracYEWVu9UBroeBkkaQh3ixmXM5HObvjfOPjyS/aoPDB3akHBU7IasR6sgq0itEfkY1WGeb5qht1flshbq0+uj4Cnl+WQRmKGN1lGRg7PaOrMtBVemW+DLO4MicuHfAwytsqLWzOO/J0XcIEUv9gDk34OoG93CIE3d7JOSQpVXdhZZBkhJVelPS4U3GcR7ONwAQLdDKMqi7AeNfSCFOxbU9BdyBuvHiMM6Mb5gCg6hglS8y5fYPj99u0H/K+JcKV1AOfBPiO05Y6wjdHBavYNZDjnxkZDD1QU6doSJ8cvhfq5XIM5QR+e6N71Fhn/SdWtyf6pqYAgWfL+pIb8+wo08T54O0S5jIYzrAk02pBwGe0+dG+06vXykW4B0zN/fag7YcPQ1iMEL86YZBYs0S3VuO8eWm3QBYzuNhkQylppyFXwONhKi2DS7Dx4laU5/547zjrCcPlswWGPQ7yji3Weml1fC2Rh6u+U3i3EM8eDNyzsddc/crAc5Kf47zUbrsBhsu5gfUUirzUXyxdde4UZWGxXv+Gr69SDVnRwrELBvCYdkRwKU9Y+alhAlF5xuuOh0TmVSOmOaEg3xjdWaenHywGxtUu1jr9xkOYXIhNt1qzque78xaQWGnHNOkSnu8u0czAHyrDoeo5M=
   - secure: kgrSUdoWSURUVcoEvnfXEbpKQIC+xUGfxKoEzljb67Kva+Z5z9HaFkc1LX7HoqxKIZpcoI7jfuHSG4Zu7vq0IWPxd9adDk1uEIe4Qj5YWv84fmIIOEO1vIVS/xdgYaFcuYASyMWBrimNgdP80/Iv7IhWYdZSTJKgJtufnYnTE6U5xC6wybWHEpnzjbMG/d8Qeocqs9KceZ58yFsQTv1O2lDJBPxtRX0bWE+GQcd7dcqKQhotedPluXLlXmAk1n+L/NJHvvT87hRLhKYTnY58ei9w6Ozg429a64Tux9paq7l0sGp6CA4OK0eCf01Tb05r8IpuHkV9A6FYWc9f6wRpUXrK72S2sgHkJapm9stVhAXvMvbiuG87DYfiyZHaDvmZnroFOr2CL4bu9VAXYVHDGQlrq4ua/PUBxUzRJSqdZxIYtRNILyz+8JreJy537W1788vsc8mGbHlB5hDoeZTYyDr3gk9uTY2FcZcpjrc8IdmLckfsUzYS7db/NjZJaKIcWIOHDN7BZtxuHoEfXVHC6Z3eduWCiY1zxV0wBheX3mSydh0IH5DLyxkm8gQ6GrZcMo33l/e5I0xAaaopF71kKhq3mhlSvcYaPgwbbQiP2cs7D0eiT8my/FJXgrOiBWuK78oPMeygst6o4GwFATrfVQMqz6KJu9H9byj+w1FYWJg=
+  - secure: Mom+83SNOJe2YYjgUx8K8FEVtMTio8CIsSSk8CxkHk55HComGKgydJ0tN3XMof65/qj9VDxRAXdm0izPRGQQxBWlMz/8GvKwTEbwvxQ3XA1gHhT9HDbm4+lQTZYObSRuMzRGFzlYRk5gP9dQxGISYE8le53KhzLDCBdz0M9vicHg9Tzfk2mOKaZGYuTbLvlxe5JQFZCeh3VMLvL+1PZ0wAJWzEftg64wQRtm740uM+pH6MYy6Q072gO9t4NpOMM2q1nXJd1usG+9SP8X+Lo91Aby8x1V0N7/cb93VOKfHEgNzzp21KzGnKsQlTa8d0SyW7ZtgKsCH300HFkkqi6tvq/1qGE1rg2JrYceL4F27k6n+aG1jXj0Epuezj1aTgfuqLsGTxw0PzEI25KShyqcsJmYYY9hw142z3exETrJliVEB2C/72D1DWAOt2aKk4nl+ef7zpGFTTbG2X76V3dysZFaRz3kfHxvzmisMxSneSqPd3VqpmFR8kIAV/lZFMtU3RDcJHJkMVETyRwzrurs2Uvnx8HXZLAjQ/NG/+cGxwEY40yAYL3ugOk8HAJyxA868RYz2UwXSUV8AHhFys1Jy5LW4BTqo5g+GxYA2xliQ0mwiMc9D2w+B2WCyA6sdHIW8FVVDNS5QfpG7B6AALyNlYAACj6YRKhCpPuHetDMY0g=

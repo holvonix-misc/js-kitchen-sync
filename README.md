@@ -3,7 +3,6 @@
 [![Build Status](https://travis-ci.org/holvonix-open/js-kitchen-sync.svg?branch=master)](https://travis-ci.org/holvonix-open/js-kitchen-sync)
 [![npm version](https://badge.fury.io/js/%40holvonix-open%2Fjs-kitchen-sync.svg)](https://badge.fury.io/js/%40holvonix-open%2Fjs-kitchen-sync)
 [![Greenkeeper badge](https://badges.greenkeeper.io/holvonix-open/js-kitchen-sync.svg)](https://greenkeeper.io/)
-[![Coverage Status](https://coveralls.io/repos/github/holvonix-open/js-kitchen-sync/badge.svg?branch=master)](https://coveralls.io/github/holvonix-open/js-kitchen-sync?branch=master)
 [![codecov](https://codecov.io/gh/holvonix-open/js-kitchen-sync/branch/master/graph/badge.svg)](https://codecov.io/gh/holvonix-open/js-kitchen-sync)
 [![Maintainability](https://api.codeclimate.com/v1/badges/00fd649e779eeb83908b/maintainability)](https://codeclimate.com/github/holvonix-open/js-kitchen-sync/maintainability)
 

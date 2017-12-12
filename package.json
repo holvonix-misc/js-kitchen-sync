@@ -57,7 +57,7 @@
   ],
   "license": "Apache-2.0",
   "dependencies": {
-    "json2array": "2.3.6",
+    "json2array": "2.4.0",
     "js-devbox": "1.1.2"
   },
   "devDependencies": {

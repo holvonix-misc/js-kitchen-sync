@@ -59,10 +59,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "json2array": "2.3.6",
-    "js-devbox": "1.1.2"
+    "js-devbox": "2.0.2"
   },
   "devDependencies": {
-    "js-devbox": "1.1.2"
+    "js-devbox": "2.0.2"
   },
   "jest": {
     "testEnvironment": "node",

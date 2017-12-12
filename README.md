@@ -1,5 +1,6 @@
 # js-kitchen-sync
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5fa086bdbec24555851203a3c791e56c)](https://www.codacy.com/app/holvonix-open/js-kitchen-sync?utm_source=github.com&utm_medium=referral&utm_content=holvonix-open/js-kitchen-sync&utm_campaign=badger)
 [![Build Status](https://travis-ci.org/holvonix-open/js-kitchen-sync.svg?branch=master)](https://travis-ci.org/holvonix-open/js-kitchen-sync)
 [![npm version](https://badge.fury.io/js/%40holvonix-open%2Fjs-kitchen-sync.svg)](https://badge.fury.io/js/%40holvonix-open%2Fjs-kitchen-sync)
 [![Greenkeeper badge](https://badges.greenkeeper.io/holvonix-open/js-kitchen-sync.svg)](https://greenkeeper.io/)

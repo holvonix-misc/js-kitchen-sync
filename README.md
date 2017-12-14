@@ -17,7 +17,7 @@ Links to all our JS packages to track dependencies.
 
 ## Usage
 
-Don't use it - this is for dependency testing purposes. :P
+Don't use it - this is for dependency testing purposes.
 
 ## Notice and License
 

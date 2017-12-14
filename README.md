@@ -13,7 +13,7 @@ Links to all our JS packages to track dependencies.
 
 ## Installation
 
-TODO: Fill-in with real repo instructions.
+`yarn add @holvonix-open/js-kitchen-sync`
 
 ## Usage
 

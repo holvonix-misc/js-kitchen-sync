@@ -17,7 +17,7 @@ TODO: Fill-in with real repo instructions.
 
 ## Usage
 
-Don't use it - this is for dependency testing purposes. :P
+Don't use it - this is for dependency testing purposes.
 
 ## Notice and License
 

@@ -2208,9 +2208,9 @@ json-stringify-safe@~5.0.1:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/json-stringify-safe/-/json-stringify-safe-5.0.1.tgz#1296a2d58fd45f19a0f6ce01d65701e2c735b6eb"
 
-json2array@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/json2array/-/json2array-3.0.0.tgz#68ba0c755c4812e056850ac16f382b98ed541c76"
+json2array@3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/json2array/-/json2array-3.0.1.tgz#8d98cc9c639c7e46c2689642e6852a46da2fe165"
 
 json5@^0.5.1:
   version "0.5.1"
